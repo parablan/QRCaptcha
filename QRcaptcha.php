@@ -3,7 +3,7 @@
 
 Powered by parablan
 Hector Alejandro Parada Blanco
-Captcha con codigo QR
+Captcha con código QR
 
 */
 
@@ -78,5 +78,6 @@ if (isset($_SESSION)) {
 } else {
     // Sesión no iniciada
 }
+
 
 
