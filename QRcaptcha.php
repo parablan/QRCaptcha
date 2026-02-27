@@ -67,10 +67,11 @@ if (isset($_SESSION)) {
                     style='text-align:center; width:110px; font-weight:bold; font-size:20px; letter-spacing: 3px'
                     maxlength='4' autocomplete='off' required>
                 <br><br>
-                <button type='submit' style='cursor: pointer;'>Enviar</button>
+                <button type='submit' style='cursor: pointer;'>Validar</button>
             </form>
         </div>
     </center>
     <?php
 }
 ?>
+
