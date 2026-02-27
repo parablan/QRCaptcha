@@ -9,16 +9,12 @@ Example:
 
 ```php
 <?php
-// c:\xampp\htdocs\MAIN2\index.php
-
 session_start();
 
-// --- SOLUCIÓN: Manejar la petición AJAX antes de cualquier salida HTML ---
 if (isset($_POST['ajax']) && isset($_SESSION["id_usuario"])) {
     include("QRcaptcha.php");
     exit; // Detenemos la ejecución para que solo devuelva el JSON
 }
-// -----------------------------------------------------------------------
 
 $token = $_SESSION["token"] = md5(uniqid(mt_rand(), true));
 
@@ -42,7 +38,6 @@ if (isset($_SESSION["id_usuario"])) {
         </form>
     ");
 } else {
-    // ... tu código de login actual ...
     echo ("
         <center>
             <form method='POST' action='sesion.php?accion=login'>
