@@ -8,49 +8,60 @@ Create a login form where a username and password are requested. If the validati
 Example:
 
 ```php
-<?PHP
+<?php
+// c:\xampp\htdocs\MAIN2\index.php
+
 session_start();
+
+// --- SOLUCIÓN: Manejar la petición AJAX antes de cualquier salida HTML ---
+if (isset($_POST['ajax']) && isset($_SESSION["id_usuario"])) {
+    include("QRcaptcha.php");
+    exit; // Detenemos la ejecución para que solo devuelva el JSON
+}
+// -----------------------------------------------------------------------
+
 $token = $_SESSION["token"] = md5(uniqid(mt_rand(), true));
+
 echo ("
-<!DOCUMENT TYPE='es'>
+<!DOCTYPE html>
 <html lang='es'>
     <head>
+        <meta charset='UTF-8'>
         <title>QRCaptcha</title>
+        <!-- Importante: jQuery debe estar disponible -->
+        <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
     </head>
     <body>
 ");
+
 if (isset($_SESSION["id_usuario"])) {
-    include_once("QRcaptcha.php");
+    include("QRcaptcha.php");
     echo ("
         <form method='POST' action='sesion.php?accion=logout&token=$_SESSION[token]'>
-        <button>Salir</button>
+            <button>Salir</button>
         </form>
     ");
 } else {
+    // ... tu código de login actual ...
     echo ("
-                <center>
-                    <table border=0 width=100%>
-                        <tr>
-                        <td align=center>
-                            <form method='POST' action='sesion.php?accion=login'>
-                                <table>
-                                <td><input type='text' id='user_name' name='user_name' placeholder='Usuario'/>
-                                <tr>
-                                <td><input type='password' id='clave' name='clave' placeholder='Clave'/>
-                                <tr>
-                                <td align=center><input type='submit' value='Autenticar'/>
-                                <input type='hidden' id='token' name='token' value='" . $token . "'>
-                                </table>
-                            </form>
-                        <tr>
-                        <td colspan=2 align='center'>
-                    </table>
-                </center>
-            </div>
-        </div>
+        <center>
+            <form method='POST' action='sesion.php?accion=login'>
+                <table>
+                    <tr><td><input type='text' name='user_name' placeholder='Usuario'/></td></tr>
+                    <tr><td><input type='password' name='clave' placeholder='Clave'/></td></tr>
+                    <tr><td align=center>
+                        <input type='submit' value='Autenticar'/>
+                        <input type='hidden' name='token' value='$token'>
+                    </td></tr>
+                </table>
+            </form>
+        </center>
+    ");
+}
+
+echo ("
     </body>
 </html>
 ");
-}
 ?>
 ```
