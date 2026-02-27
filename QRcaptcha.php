@@ -38,7 +38,7 @@ if (isset($_SESSION)) {
 <script>
         function actualizarQR(){
             $.ajax({
-                url: 'captcha.php',
+                url: 'QRcaptcha.php',
                 type: 'POST',
                 data: { ajax: 1 }, 
                 dataType: 'json',
