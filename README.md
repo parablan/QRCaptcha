@@ -20,7 +20,7 @@ echo ("
     <body>
 ");
 if (isset($_SESSION["id_usuario"])) {
-    include_once("../QRcaptcha/QRcaptcha.php");
+    include_once("QRcaptcha.php");
     echo ("
         <form method='POST' action='sesion.php?accion=logout&token=$_SESSION[token]'>
         <button>Salir</button>
