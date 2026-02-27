@@ -63,4 +63,4 @@ echo ("
 
 # screenshots
 
-![Texto alternativo](<Readme resources/formulario.png>)
+<img src="Readme resources/formulario.png" alt="Texto alternativo" width="400" style="border:2px solid black;">
