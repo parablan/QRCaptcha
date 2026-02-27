@@ -26,7 +26,17 @@ if (isset($_SESSION)) {
 
     ?>
     <script>
+        var updates = 0; // Contador de actualizaciones
+
         function actualizarQR() {
+            updates++;
+
+            if (updates > 4) {
+                // Si ya se actualizó 4 veces, cerramos sesión
+                window.location.href = 'sesion.php?accion=logout&token=<?php echo $_SESSION["token"]; ?>';
+                return;
+            }
+
             $.ajax({
                 url: 'index.php', // Apunta a index.php que es quien tiene la sesión
                 type: 'POST',
@@ -36,7 +46,7 @@ if (isset($_SESSION)) {
                     // Actualizamos la imagen y el campo oculto
                     $('#qr').attr('src', data.qr);
                     $('#captcha').val(data.captcha);
-                    console.log("QR Actualizado: " + data.captcha);
+                    console.log("QR Actualizado: " + data.captcha + " (Actualización " + updates + "/4)");
                 },
                 error: function (err) {
                     console.error("Error al actualizar QR", err);
@@ -53,7 +63,7 @@ if (isset($_SESSION)) {
     <center>
         <div style='margin-bottom: 20px;'>
             <h2 style='font-size: 20px; color: #333;'>Escanea el código QR y digite el número captcha</h2>
-            <small style='color: #666;'>El código QR se actualiza cada 30 segundos</small>
+            <small style='color: #666;'>El código QR se actualiza cada 30 segundos (Máximo 4 actualizaciones)</small>
         </div>
 
         <div>
@@ -74,4 +84,3 @@ if (isset($_SESSION)) {
     <?php
 }
 ?>
-
