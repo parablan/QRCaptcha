@@ -2,7 +2,7 @@
 Captcha generator using QR code
 
 # How to use
-Create a login form where a username and password are requested. If the validation is true, include the file QRcaptcha\QRcaptcha.php to perform a second validation using a QR captcha.
+Create a login form where a username and password are requested. If the validation is true, include the file QRcaptcha.php to perform a second validation using a QR captcha.
 
 
 Example:
