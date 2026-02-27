@@ -1,6 +1,4 @@
 <?php
-// c:\xampp\htdocs\MAIN2\QRcaptcha.php
-
 require_once 'vendor/autoload.php';
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
@@ -54,8 +52,8 @@ if (isset($_SESSION)) {
 
     <center>
         <div style='margin-bottom: 20px;'>
-            <h2 style='font-size: 20px; color: #333;'>Escanea el QR y digita el código</h2>
-            <small style='color: #666;'>El código se actualiza cada 30 segundos</small>
+            <h2 style='font-size: 20px; color: #333;'>Escanea el código QR y digite el número captcha</h2>
+            <small style='color: #666;'>El código QR se actualiza cada 30 segundos</small>
         </div>
 
         <div>
