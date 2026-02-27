@@ -63,4 +63,8 @@ echo ("
 
 # screenshots
 
-<img src="Readme resources/formulario.png" alt="Texto alternativo" width="200" style="border:2px solid black;">
+<img src="Readme resources/formulario.png" alt="Texto alternativo" width="300" style="border:2px solid black;">
+
+<img src="Readme resources/QRcaptcha.png" alt="Texto alternativo" width="300" style="border:2px solid black;">
+
+
