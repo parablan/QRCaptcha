@@ -32,11 +32,6 @@ echo ("
 
 if (isset($_SESSION["id_usuario"])) {
     include("QRcaptcha.php");
-    echo ("
-        <form method='POST' action='sesion.php?accion=logout&token=$_SESSION[token]'>
-            <button>Salir</button>
-        </form>
-    ");
 } else {
     echo ("
         <center>
